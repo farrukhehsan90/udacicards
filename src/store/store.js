@@ -8,8 +8,7 @@ const middlewares=[thunk];
 const preloadedState={};
 
 const store=createStore(rootReducer,preloadedState,compose(
-    applyMiddleware(...middlewares)),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middlewares))
     )  ;
 
 export default store;
