@@ -6,10 +6,12 @@ import {saveDeckTitleAction} from '../../actions/deckActions';
 
 
 class AddDeck extends Component {
-    state = {  }
+    state = { 
+        inputContainsText:false
+     }
 
-    onChange=(text)=>{
-        this.setState({text});
+    onChange= async(text)=>{
+        await this.setState({text,inputContainsText:text.length>0});
     }
 
 onAddDeck=()=>{
@@ -21,7 +23,7 @@ onAddDeck=()=>{
 
     render() {
 
-        const {text}=this.state;
+        const {text,inputContainsText}=this.state;
 
         return (
             <View>
@@ -31,8 +33,9 @@ onAddDeck=()=>{
                 onChangeText={this.onChange}
                 value={text}
                 name="text"
+                placeholder="Type a deck name"
                 />
-                <Button onPress={this.onAddDeck} title="Add Deck"/>
+                <Button disabled={!inputContainsText} onPress={this.onAddDeck} title="Add Deck"/>
             </View>
         );
     }

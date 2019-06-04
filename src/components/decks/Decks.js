@@ -14,7 +14,7 @@ import {
 class Decks extends Component {
   state = {
     decks: []
-  };
+    };
 
   registerForPushNotificationsAsync = async () => {
     const { status: existingStatus } = await Permissions.getAsync(

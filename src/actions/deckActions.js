@@ -8,6 +8,7 @@ export const getDecksAction=()=>dispatch=>{
 
     getDecks()
         .then(decks=>{
+            console.log('initial decks',decks);
             AsyncStorage.multiGet(decks)
                 .then(deckValues=>{
                     return dispatch({
