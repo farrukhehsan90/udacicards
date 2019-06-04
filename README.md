@@ -2,7 +2,7 @@
 Welcome to UdaciCards! 
 Create, Learn and Grow with quizes from you, for you and by you!
 
-##Description
+## Description
 Project made using expo-cli
 
 ## Install Dependencies
