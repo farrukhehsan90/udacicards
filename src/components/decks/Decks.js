@@ -39,6 +39,7 @@ class Decks extends Component {
 
   async componentDidMount() {
     await this.props.getDecksAction();
+    await this.props.removeDecksAction();
     await this.registerForPushNotificationsAsync();
     await this.sendPushNotifications();
   }

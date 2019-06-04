@@ -7,7 +7,8 @@ import {saveDeckTitleAction} from '../../actions/deckActions';
 
 class AddDeck extends Component {
     state = { 
-        inputContainsText:false
+        inputContainsText:false,
+        text:''
      }
 
     onChange= async(text)=>{
