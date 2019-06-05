@@ -8,7 +8,6 @@ export const getDecksAction=()=>dispatch=>{
 
     getDecks()
         .then(decks=>{
-            console.log('initial decks',decks);
             AsyncStorage.multiGet(decks)
                 .then(deckValues=>{
                     return dispatch({
@@ -16,8 +15,9 @@ export const getDecksAction=()=>dispatch=>{
                         payload:deckValues
                     })
                 })
+                .catch(err=>err);
         })
-        .catch(err=>console.log(err));
+        .catch(err=>err);
 
 }
 
@@ -30,6 +30,7 @@ export const getDeckAction=(title,navigation)=>dispatch=>{
         })})
         .then(deck=>
             navigation.navigate("Deck"))
+        .catch(err=>err);
 }
 
 export const saveDeckTitleAction=(title,navigation)=>dispatch=>{
@@ -45,7 +46,9 @@ export const saveDeckTitleAction=(title,navigation)=>dispatch=>{
                 })
             })
             .then(res=>navigation.navigate('Decks'))
+            .catch(err=>err);
        })
+       .catch(err=>err)
         
 }
 
@@ -60,7 +63,9 @@ export const removeDecksAction=()=>dispatch=>{
                     payload:{}
                 })
             })
+            .catch(err=>err);
     })
+    .catch(err=>err);
 
 }
 
@@ -85,9 +90,13 @@ export const saveCardToDeckAction=(deck,question,answer,navigation)=>dispatch=>{
                             
                         });
                     })
+                    .catch(err=>err);
                     })
+                    .catch(err=>err);
         })
+        .catch(err=>err);
        
     })
-    .then(res=>navigation.navigate('Deck'));
+    .then(res=>navigation.navigate('Deck'))
+    .catch(err=>err);
 }

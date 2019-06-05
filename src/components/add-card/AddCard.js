@@ -8,7 +8,9 @@ import {saveCardToDeckAction} from '../../actions/deckActions';
 class AddCard extends Component {
     state = { 
         question:'',
-        answer:''
+        answer:'',
+        questionContainsText:false,
+        answerContainsText:false
      }
 
      onAddCard=()=>{
@@ -20,12 +22,13 @@ class AddCard extends Component {
     render() {
 
         const {deck}=this.props.decks;
+        const {question,answer,questionContainsText,answerContainsText}=this.state;
         return (
             <View>
                 <Text style={styles.text}>Add Card to {JSON.parse(deck).title}</Text>
-                <TextInput placeholder="Type your question" style={styles.textInput} onChangeText={(question)=>this.setState({question})}/>
-                <TextInput placeholder="Type your answer" style={styles.textInput} onChangeText={(answer)=>this.setState({answer})}/>
-                <Button mode="contained" onPress={this.onAddCard}>Submit</Button>
+                <TextInput placeholder="Type your question" style={styles.textInput} onChangeText={(question)=>{this.setState({question,questionContainsText:question.length>0})}}/>
+                <TextInput placeholder="Type your answer" style={styles.textInput} onChangeText={(answer)=>this.setState({answer,answerContainsText:answer.length>0})}/>
+                <Button disabled={!(questionContainsText && answerContainsText)} mode="contained" onPress={this.onAddCard}>Submit</Button>
             </View>
         );
     }

@@ -50,7 +50,8 @@ class StartQuiz extends Component {
 
     let quizContent;
 
-    if (deck.length > 0) {
+    if (JSON.parse(deck).questions.length > 0) {
+     
       const questions = JSON.parse(deck).questions;
       quizContent = (
         <View>
@@ -116,10 +117,15 @@ class StartQuiz extends Component {
             ):null
           }
           {count === questions.length ? (
-            <Text style={{textAlign:'center',textAlignVertical:'bottom',fontSize:20}}>{`Your Score : ${Math.round(Math.floor((score / questions.length) * 100))}%`}</Text>
+            <Text style={{textAlign:'center',textAlignVertical:'bottom',fontSize:20}}>{`Your Score : ${score}/${questions.length}`}</Text>
           ) : null}
         </View>
       );
+    }
+    else{
+      quizContent=(
+      <Text style={styles.text}>No Cards! Add one now!</Text>
+      )
     }
 
     return <View>{quizContent}</View>;

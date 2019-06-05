@@ -33,13 +33,12 @@ class Decks extends Component {
     let myToken;
     await Notifications.getExpoPushTokenAsync()
       .then(token => (myToken = token))
-      .catch(err => console.log("token error", err));
+      .catch(err => err);
     return;
   };
 
   async componentDidMount() {
     await this.props.getDecksAction();
-    await this.props.removeDecksAction();
     await this.registerForPushNotificationsAsync();
     await this.sendPushNotifications();
   }
@@ -50,7 +49,8 @@ class Decks extends Component {
       body: "We've not seen you around lately! Take a quick quiz!"
     },{time:new Date().getTime()+3000,repeat:"day"})
     .then(res=>{
-    }); 
+    })
+    .catch(err=>err); 
   };
 
   componentWillReceiveProps(nextProps) {
@@ -82,6 +82,7 @@ class Decks extends Component {
             .then(endState=>{
               this.onPressCard(deck[0]);
             })
+            .catch(err=>err);
            
           }}
         >
