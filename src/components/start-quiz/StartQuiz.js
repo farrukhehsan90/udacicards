@@ -15,15 +15,9 @@ class StartQuiz extends Component {
   onPressCorrect = (questions, answer) => {
     const { count, score, optionButtonsDisabled } = this.state;
     if (answer !== null) {
-      if (answer.trim().toString().toLowerCase() === "yes") {
         return this.setState({
           count: count === questions.length ? count : count + 1,
           score: score + 1
-        });
-      }
-
-      return this.setState({
-        count: count === questions.length ? count : count + 1
       });
     }
   };
@@ -31,13 +25,7 @@ class StartQuiz extends Component {
   onPressInCorrect = (questions, answer) => {
     const { count, score } = this.state;
     if (answer !== null) {
-      if (answer.trim().toString().toLowerCase() === "no") {
-        return this.setState({
-          count: count === questions.length ? count : count + 1,
-          score: score + 1
-        });
-      }
-
+      
       return this.setState({
         count: count === questions.length ? count : count + 1
       });
@@ -81,7 +69,8 @@ class StartQuiz extends Component {
               }))
             }
             title={showAnswer ? "Hide Answer" : "View Answer"}
-          />}
+          />
+          }
           <Button
             disabled={count === questions.length}
             onPress={() =>
