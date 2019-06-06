@@ -28,6 +28,7 @@ class AddCard extends Component {
                 <Text style={styles.text}>Add Card to {JSON.parse(deck).title}</Text>
                 <TextInput placeholder="Type your question" style={styles.textInput} onChangeText={(question)=>{this.setState({question,questionContainsText:question.length>0})}}/>
                 <TextInput placeholder="Type your answer" style={styles.textInput} onChangeText={(answer)=>this.setState({answer,answerContainsText:answer.length>0})}/>
+                <Text>Please add a "Yes" or "No" as the answer (without the quotes)</Text>
                 <Button disabled={!(questionContainsText && answerContainsText)} mode="contained" onPress={this.onAddCard}>Submit</Button>
             </View>
         );
